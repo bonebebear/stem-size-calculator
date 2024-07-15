@@ -17,6 +17,7 @@
       const stemSize = 0.640 + 0.508 * X1 + 0.022 * X2 + 0.014 * X3 + 5.047 * X4 - 1.411 * X5 + 6.216 * X6;
       
       document.getElementById('result').innerText = 'Calculated Stem Size: ' + stemSize.toFixed(2);
+      document.getElementById('research').innerText = 'According to the research "Femoral Geometry-Based Model for Precision Sizing of Femoral Stems in Hip Arthroplasty." Stem size usage = 0.640 + 0.508*Sex + 0.022*Year + 0.014*BW(kg) + 5.047*Ht(m) - 1.411*P20/D20 + 6.216*CBR which these model base on both demographic and preoperative parameters increased the accuracy to 92.3% in predicting the correct stem size within ±1 size.';
     }
   </script>
 </head>
@@ -51,6 +52,7 @@
       <button type="button" class="btn btn-primary" onclick="calculateStemSize()">Calculate Stem Size</button>
     </form>
     <h4 class="mt-4" id="result"></h4>
+    <p id="research" class="mt-4"></p>
   </div>
 </body>
 </html>
