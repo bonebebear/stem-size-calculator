@@ -19,6 +19,16 @@
       document.getElementById('result').innerText = 'Calculated Stem Size: ' + stemSize.toFixed(2);
       document.getElementById('research').innerText = 'According to the research "Femoral Geometry-Based Model for Precision Sizing of Femoral Stems in Hip Arthroplasty." Stem size usage = 0.640 + 0.508*Sex + 0.022*Year + 0.014*BW(kg) + 5.047*Ht(m) - 1.411*P20/D20 + 6.216*CBR which these model base on both demographic and preoperative parameters increased the accuracy to 92.3% in predicting the correct stem size within ±1 size.';
     }
+    function clearFields() {
+      document.getElementById('X1').value = '';
+      document.getElementById('X2').value = '';
+      document.getElementById('X3').value = '';
+      document.getElementById('X4').value = '';
+      document.getElementById('X5').value = '';
+      document.getElementById('X6').value = '';
+      document.getElementById('result').innerText = '';
+      document.getElementById('research').innerText = '';
+    }
   </script>
 </head>
 <body>
@@ -50,6 +60,7 @@
         <input type="number" class="form-control" id="X6" placeholder="Enter CBR value">
       </div>
       <button type="button" class="btn btn-primary" onclick="calculateStemSize()">Calculate Stem Size</button>
+      <button type="button" class="btn btn-secondary ml-2" onclick="clearFields()">Clear Fields</button>
     </form>
     <h4 class="mt-4" id="result"></h4>
     <p id="research" class="mt-4"></p>
