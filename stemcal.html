@@ -6,8 +6,16 @@
   <title>Stem Size Calculator</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <script>
+    let sexValue = 0; // Default is female (0)
+
+    function setSex(value) {
+      sexValue = value; // 1 for male, 0 for female
+      document.getElementById("maleBtn").classList.toggle("active", value === 1);
+      document.getElementById("femaleBtn").classList.toggle("active", value === 0);
+    }
+
     function calculateStemSize() {
-      const X1 = document.getElementById('X1').checked ? 1 : 0; // 1 for male, 0 for female
+      const X1 = sexValue; // Use the selected sex value (1 for male, 0 for female)
       const X2 = parseFloat(document.getElementById('X2').value);
       const X3 = parseFloat(document.getElementById('X3').value);
       const X4 = parseFloat(document.getElementById('X4').value);
@@ -19,8 +27,9 @@
       document.getElementById('result').innerText = 'Calculated Stem Size: ' + stemSize.toFixed(2);
       document.getElementById('research').innerText = 'According to the research "Femoral Geometry-Based Model for Precision Sizing of Femoral Stems in Hip Arthroplasty." Stem size usage = 0.640 + 0.508*Sex + 0.022*Year + 0.014*BW(kg) + 5.047*Ht(m) - 1.411*P20/D20 + 6.216*CBR which these model base on both demographic and preoperative parameters increased the accuracy to 92.3% in predicting the correct stem size within ±1 size.';
     }
+
     function clearFields() {
-      document.getElementById('X1').checked = false; // Reset toggle to "Female"
+      setSex(0); // Reset to female (0)
       document.getElementById('X2').value = '';
       document.getElementById('X3').value = '';
       document.getElementById('X4').value = '';
@@ -52,14 +61,15 @@
         <input type="number" class="form-control" id="X5" placeholder="Enter P20/D20 ratio">
       </div>
       <div class="form-group">
-        <label for="X6">CBR: The width of the femoral canal / The width of the femur at the isthmus level (100mm from the lesser trochanter) </label>
+        <label for="X6">CBR: The width of the femoral canal / The width of the femur at the isthmus level (100mm from the lesser trochanter)</label>
         <input type="number" class="form-control" id="X6" placeholder="Enter CBR value">
       </div>
 
-      <!-- Toggle switch for Sex (Male/Female) -->
-      <div class="form-group form-check form-switch mt-4">
-        <input class="form-check-input" type="checkbox" id="X1">
-        <label class="form-check-label" for="X1">Male (toggle on for Male, off for Female)</label>
+      <!-- Toggle button for Sex (Male/Female) -->
+      <div class="form-group mt-4">
+        <label>Sex:</label><br>
+        <button type="button" id="maleBtn" class="btn btn-outline-primary mr-2" onclick="setSex(1)">Male</button>
+        <button type="button" id="femaleBtn" class="btn btn-outline-secondary" onclick="setSex(0)">Female</button>
       </div>
 
       <button type="button" class="btn btn-primary" onclick="calculateStemSize()">Calculate Stem Size</button>
