@@ -22,7 +22,7 @@
       const X5 = parseFloat(document.getElementById('X5').value);
       const X6 = parseFloat(document.getElementById('X6').value);
       
-      const stemSize = 0.640 + 0.508 * X1 + 0.022 * X2 + 0.014 * X3 + 5.047 * X4 - 1.411 * X5 + 6.216 * X6;
+      const stemSize = 0.640 + 0.508 * X1 + 0.022 * X2 + 0.014 * X3 + 5.047 * X4 - 1.411 * (X5/X6) + 6.216 * (X7/X8);
       
       document.getElementById('result').innerText = 'Calculated Stem Size: ' + stemSize.toFixed(2);
       document.getElementById('research').innerText = 'According to the research "Femoral Geometry-Based Model for Precision Sizing of Femoral Stems in Hip Arthroplasty." Stem size usage = 0.640 + 0.508*Sex + 0.022*Year + 0.014*BW(kg) + 5.047*Ht(m) - 1.411*P20/D20 + 6.216*CBR which these model base on both demographic and preoperative parameters increased the accuracy to 92.3% in predicting the correct stem size within ±1 size.';
@@ -35,6 +35,8 @@
       document.getElementById('X4').value = '';
       document.getElementById('X5').value = '';
       document.getElementById('X6').value = '';
+      document.getElementById('X7').value = '';
+      document.getElementById('X8').value = '';
       document.getElementById('result').innerText = '';
       document.getElementById('research').innerText = '';
     }
@@ -64,14 +66,21 @@
         <input type="number" step="0.01" class="form-control" id="X4" placeholder="Enter height in meters">
       </div>
       <div class="form-group">
-        <label for="X5">P20/D20: The inner diameter at 20 mm proximal / 20 mm distal to the lesser trochanter</label>
-        <input type="number" class="form-control" id="X5" placeholder="Enter P20/D20 ratio">
+        <label for="X5">P20: The inner diameter at 20 mm proximal to the lesser trochanter (Figure 1)</label>
+        <input type="number" class="form-control" id="X5" placeholder="Enter P20 diameter">
       </div>
       <div class="form-group">
-        <label for="X6">CBR: The width of the femoral canal / The width of the femur at the isthmus level (100mm from the lesser trochanter)</label>
-        <input type="number" class="form-control" id="X6" placeholder="Enter CBR value">
+        <label for="X6">D20: The inner diameter at 20 mm distal to the lesser trochanter (Figure 1)</label>
+        <input type="number" class="form-control" id="X6" placeholder="Enter P20/D20 ratio">
       </div>
-
+      <div class="form-group">
+        <label for="X7">Inner bone diameter: The width of the femoral canal 10 cm from the lesser trochanter (Figure1)</label>
+        <input type="number" class="form-control" id="X7" placeholder="Enter inner diameter">
+      </div>
+      <div class="form-group">
+        <label for="X8">Outer bone diameter: The width of the femur outer cortex 10 cm from the lesser trochanter (Figure1)</label>
+        <input type="number" class="form-control" id="X8" placeholder="Enter outer diameter">
+      </div>
 
       <button type="button" class="btn btn-primary" onclick="calculateStemSize()">Calculate Stem Size</button>
       <button type="button" class="btn btn-secondary ml-2" onclick="clearFields()">Clear Fields</button>
