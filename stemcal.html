@@ -47,48 +47,60 @@
 <body>
   <div class="container mt-5">
     <h2 class="mb-4">Stem Size Calculator for Surgery</h2>
-    <form>
-            <!-- Toggle button for Sex (Male/Female) -->
-      <div class="form-group mt-4">
-        <label>Sex:</label><br>
-        <button type="button" id="maleBtn" class="btn btn-outline-primary mr-2" onclick="setSex(1)">Male</button>
-        <button type="button" id="femaleBtn" class="btn btn-outline-secondary" onclick="setSex(0)">Female</button>
+
+    <div class="row">
+      <!-- Form Column -->
+      <div class="col-md-8">
+        <form>
+          <!-- Toggle button for Sex (Male/Female) -->
+          <div class="form-group mt-4">
+            <label>Sex:</label><br>
+            <button type="button" id="maleBtn" class="btn btn-outline-primary mr-2" onclick="setSex(1)">Male</button>
+            <button type="button" id="femaleBtn" class="btn btn-outline-secondary" onclick="setSex(0)">Female</button>
+          </div>
+
+          <div class="form-group">
+            <label for="X2">Age (years):</label>
+            <input type="number" class="form-control" id="X2" placeholder="Enter age in years">
+          </div>
+          <div class="form-group">
+            <label for="X3">Body Weight (kg):</label>
+            <input type="number" class="form-control" id="X3" placeholder="Enter body weight in kg">
+          </div>
+          <div class="form-group">
+            <label for="X4">Height (m):</label>
+            <input type="number" step="0.01" class="form-control" id="X4" placeholder="Enter height in meters">
+          </div>
+          <div class="form-group">
+            <label for="X5">P20: The inner diameter at 20 mm proximal to the lesser trochanter (Figure 1)</label>
+            <input type="number" class="form-control" id="X5" placeholder="Enter P20 diameter">
+          </div>
+          <div class="form-group">
+            <label for="X6">D20: The inner diameter at 20 mm distal to the lesser trochanter (Figure 1)</label>
+            <input type="number" class="form-control" id="X6" placeholder="Enter P20/D20 ratio">
+          </div>
+          <div class="form-group">
+            <label for="X7">Inner bone diameter: The width of the femoral canal 10 cm from the lesser trochanter (Figure 1)</label>
+            <input type="number" class="form-control" id="X7" placeholder="Enter inner diameter">
+          </div>
+          <div class="form-group">
+            <label for="X8">Outer bone diameter: The width of the femur outer cortex 10 cm from the lesser trochanter (Figure 1)</label>
+            <input type="number" class="form-control" id="X8" placeholder="Enter outer diameter">
+          </div>
+
+          <button type="button" class="btn btn-primary" onclick="calculateStemSize()">Calculate Stem Size</button>
+          <button type="button" class="btn btn-secondary ml-2" onclick="clearFields()">Clear Fields</button>
+        </form>
+        <h4 class="mt-4" id="result"></h4>
+        <p id="research" class="mt-4"></p>
       </div>
 
-      <div class="form-group">
-        <label for="X2">Age (years):</label>
-        <input type="number" class="form-control" id="X2" placeholder="Enter age in years">
+      <!-- Image Column -->
+      <div class="col-md-4 d-flex align-items-center">
+        <img src="S__18358317.jpg" class="img-fluid" alt="Bone Measurement Diagram">
       </div>
-      <div class="form-group">
-        <label for="X3">Body Weight (kg):</label>
-        <input type="number" class="form-control" id="X3" placeholder="Enter body weight in kg">
-      </div>
-      <div class="form-group">
-        <label for="X4">Height (m):</label>
-        <input type="number" step="0.01" class="form-control" id="X4" placeholder="Enter height in meters">
-      </div>
-      <div class="form-group">
-        <label for="X5">P20: The inner diameter at 20 mm proximal to the lesser trochanter (Figure 1)</label>
-        <input type="number" class="form-control" id="X5" placeholder="Enter P20 diameter">
-      </div>
-      <div class="form-group">
-        <label for="X6">D20: The inner diameter at 20 mm distal to the lesser trochanter (Figure 1)</label>
-        <input type="number" class="form-control" id="X6" placeholder="Enter P20/D20 ratio">
-      </div>
-      <div class="form-group">
-        <label for="X7">Inner bone diameter: The width of the femoral canal 10 cm from the lesser trochanter (Figure1)</label>
-        <input type="number" class="form-control" id="X7" placeholder="Enter inner diameter">
-      </div>
-      <div class="form-group">
-        <label for="X8">Outer bone diameter: The width of the femur outer cortex 10 cm from the lesser trochanter (Figure1)</label>
-        <input type="number" class="form-control" id="X8" placeholder="Enter outer diameter">
-      </div>
+    </div>
 
-      <button type="button" class="btn btn-primary" onclick="calculateStemSize()">Calculate Stem Size</button>
-      <button type="button" class="btn btn-secondary ml-2" onclick="clearFields()">Clear Fields</button>
-    </form>
-    <h4 class="mt-4" id="result"></h4>
-    <p id="research" class="mt-4"></p>
   </div>
 </body>
 </html>
